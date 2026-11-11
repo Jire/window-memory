@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.window-memory"
+          path="/org/gnome/shell/extensions/window-memory/">
+    <key name="restore-maximized" type="b">
+      <default>true</default>
+      <summary>Restore maximized state</summary>
+      <description>Maximize a reopened window again if it was maximized when it closed.</description>
+    </key>
+    <key name="restore-workspace" type="b">
+      <default>false</default>
+      <summary>Restore workspace</summary>
+      <description>Move a reopened window back to the workspace it was on when it closed.</description>
+    </key>
+    <key name="follow-monitor-changes" type="b">
+      <default>true</default>
+      <summary>Put windows back after monitor changes</summary>
+      <description>When monitors are added, removed, turned off or rearranged, move open windows back to where they were the last time that monitor setup was in use.</description>
+    </key>
+    <key name="ignored-apps" type="as">
+      <default>[]</default>
+      <summary>Ignored apps</summary>
+      <description>App IDs (such as org.gnome.Nautilus.desktop) whose windows are left alone.</description>
+    </key>
+    <key name="forget-apps" type="as">
+      <default>[]</default>
+      <summary>Apps to forget (internal)</summary>
+      <description>Written by the preferences window: the extension deletes what it remembers for these apps, then clears this list. "*" forgets everything.</description>
+    </key>
+    <key name="debug" type="b">
+      <default>false</default>
+      <summary>Debug logging</summary>
+      <description>Log what is saved and restored to the system journal.</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,16 @@
+{
+  "uuid": "window-memory@jire.github.io",
+  "name": "Window Memory",
+  "description": "Remembers where every window was and puts it back, like Windows and macOS do.\n\n• Reopened apps come back at the same position and size, on the same monitor, maximized if they were\n• Positions are remembered separately for each monitor setup (docked, undocked, a monitor turned off…)\n• When a monitor sleeps, wakes, is unplugged or plugged back in, windows go back to where they were instead of piling onto one screen",
+  "url": "https://github.com/Jire/window-memory",
+  "shell-version": [
+    "49",
+    "50",
+    "51"
+  ],
+  "session-modes": [
+    "user",
+    "unlock-dialog"
+  ],
+  "settings-schema": "org.gnome.shell.extensions.window-memory"
+}
