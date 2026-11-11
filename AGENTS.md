@@ -25,7 +25,7 @@ If windows aren't being restored, have them turn on **Debug logging** in the set
 | `extension/store.js` | Saved-state format, window-to-slot matching, the JSON file in `~/.local/state/window-memory/`. Also imported by `prefs.js`, so it must not import Shell modules |
 | `extension/monitors.js` | Identifies monitors by EDID and builds the per-setup layout key |
 | `extension/prefs.js` | Preferences window (libadwaita) |
-| `extension/schemas/` | GSettings schema. Compiled by `scripts/build.sh`; don't commit `gschemas.compiled` |
+| `extension/schemas/` | GSettings schema XML only. GNOME 44+ and `install.sh` compile it at install time; don't commit or ship `gschemas.compiled` |
 | `scripts/hot-load.js` | Looking Glass loader for reloading without logging out. Not shipped in the extension zip; `install.sh` puts it in `~/.local/share/window-memory/` |
 | `install.sh` | User-facing installer (curl/wget pipe), also `--uninstall`, `--purge`, `--version`, `--zip` |
 | `scripts/build.sh` | Builds `dist/<uuid>.shell-extension.zip` |
@@ -69,6 +69,6 @@ Start GTK test windows with `WAYLAND_DISPLAY=wm-test`. To drive the shell over `
 
 ## Releasing
 
-Tag and push (`git tag -a vN -m vN && git push origin vN`). CI builds the zip and attaches it to the GitHub release, and the installer always fetches `releases/latest`. Don't add a `version` key to `metadata.json`: extensions.gnome.org sets it. When a new GNOME version comes out, check the Mutter APIs above, test, then add it to `shell-version`.
+Tag and push (`git tag -a vN -m vN && git push origin vN`). CI builds the zip and attaches it to the GitHub release, and the installer always fetches `releases/latest`. Upload that same zip at [extensions.gnome.org/upload](https://extensions.gnome.org/upload/), which reviews each version before publishing it. Don't add a `version` key to `metadata.json`: extensions.gnome.org sets it. When a new GNOME version comes out, check the Mutter APIs above, test, then add it to `shell-version`.
 
 Everything shipped in `extension/` must pass the [extensions.gnome.org review guidelines](https://gjs.guide/extensions/review-guidelines/review-guidelines.html). Keep it free of build or dev files. The `unlock-dialog` session mode is deliberate: monitors often disconnect while the screen is locked, and the extension has to keep tracking through that. It has no UI on the lock screen. Say so in the review notes when submitting.

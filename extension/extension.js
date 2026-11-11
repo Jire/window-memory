@@ -136,6 +136,11 @@ export default class WindowMemory extends Extension {
         this._log(`enabled, monitor layout: ${this._layout.key}`);
     }
 
+    // This extension also runs in the unlock-dialog session mode. Monitors
+    // usually go to sleep, disconnect and reconnect while the screen is
+    // locked; if the extension were disabled then, it would miss those
+    // changes and couldn't put windows back when they come back. It adds no
+    // UI and handles no keyboard input, on the lock screen or anywhere else.
     disable() {
         for (const tw of this._tracked.values()) {
             if (tw.hasTimer('snapshot'))

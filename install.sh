@@ -199,6 +199,12 @@ else
 fi
 [ -f "$EXT_DIR/metadata.json" ] || die "install failed: $EXT_DIR/metadata.json is missing"
 
+# gnome-extensions compiles the settings schema itself; a plain unzip doesn't.
+if [ ! -f "$EXT_DIR/schemas/gschemas.compiled" ]; then
+    have glib-compile-schemas || die "glib-compile-schemas not found; install your distro's glib2 tools and run this again"
+    glib-compile-schemas "$EXT_DIR/schemas"
+fi
+
 enable_extension
 install_helper
 
